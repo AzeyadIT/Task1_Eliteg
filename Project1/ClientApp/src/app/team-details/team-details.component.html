@@ -1,0 +1,31 @@
+<section class="my-5">
+    <div class="container">
+        <div class="row">
+            <h3 >Players of </h3>
+        </div>
+    </div>
+    <div class="container my-3">
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date of birth</th>
+                        <th>Nationality</th>
+                        <th>Image</th>
+                        <th></th>        
+                    </tr>
+                </thead>
+                <tbody *ngIf="team !=null">
+                                        <tr *ngFor="let item of team.players">
+                        <td>{{item.name}}</td>
+                        <td>{{item.dateofbirth}}</td>
+                        <td>{{item.nationality}}</td>
+                        <td>{{item.image}}</td>
+                        <td> <a (click)="deletePlayer(item)" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

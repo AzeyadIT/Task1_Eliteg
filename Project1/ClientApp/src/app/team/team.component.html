@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12  py-3">
+            <h1>Teams List</h1>
+            <a [routerLink]="['/Teams/Create']" class="btn btn-primary float-right"><i class="fa fa-angle-right"></i>Create</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-12">
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>country</th>
+                <th>foundationDate</th>
+                <th>coachName</th>
+                <th>logoImage</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listTeam">
+                <td>{{item.name}}</td>
+                <td>{{item.country}}</td>
+                <td>{{item.foundationDate}}</td>
+                <td>{{item.coachName}}</td>
+                <td>{{item.logoImage}}</td>
+                <td>
+                    <a [routerLink]="['/Teams', item.id]" class="btn btn-info btn-sm">{{item.players.length}}
+                        Players</a> |
+                    <a (click)="deleteTeam(item)" class="btn btn-danger btn-sm">Delete</a> |
+                    <a [routerLink]="['/Teams/Edit', item.id]" class="btn btn-warning btn-sm">  Edit  </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,101 @@
+<section id="contact" class="py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <h3 class="text-center" *ngIf="!checkEditMode()">Add a team</h3>
+                        <h3 class="text-center" *ngIf="checkEditMode()">Edit a team</h3>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>
+                                    Name
+                                </label>
+                                <input class="form-control" id="name" type="text" [(ngModel)]="team.name" name="name">
+                            </div>
+                            <div class="col-md-6">
+                                <label>
+                                    Coach Name
+                                </label>
+                                <input class="form-control" id="coachName" type="text" [(ngModel)]="team.coachName"
+                                    name="coachName">
+                            </div>
+                            <div class="col-md-6">
+                                <label>
+                                    Country
+                                </label>
+                                <input class="form-control" id="country" type="text" [(ngModel)]="team.country"
+                                    name="country">
+                            </div>
+                            <div class="col-md-6">
+                                <label>
+                                    Foundation Date
+                                </label>
+                                <input class="form-control" id="foundationDate" type="date"
+                                    [(ngModel)]="team.foundationDate" name="foundationDate">
+                            </div>
+                            <div class="col-md-6 pt-2">
+                                <h6>logo Image</h6>
+                                <div>
+                                    <label for="logoImage">
+                                        Choose image
+                                    </label>
+                                    <input class="custom-file-control" id="logoImage" type="file"
+                                        (change)="fileChange($event.target.files)" [(ngModel)]="team.logoImage"
+                                        name="file">
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-center">Add a Player</h3>
+                    <hr>
+                    <div class="row" *ngFor="let player of team.players">
+                        <div class="col-md-6">
+                            <label>
+                                Name
+                            </label>
+                            <input class="form-control" id="name" type="text" [(ngModel)]="player.name" name="name">
+                        </div>
+                        <div class="col-md-6">
+                            <label>
+                                Nationality
+                            </label>
+                            <input class="form-control" id="nationality" type="text" [(ngModel)]="player.nationality"
+                                name="nationality">
+                        </div>
+                        <div class="col-md-6">
+                            <label>
+                                Date of birth
+                            </label>
+                            <input class="form-control" id="dateofbirth" type="date" [(ngModel)]="player.dateofbirth"
+                                name="dateofbirth">
+                        </div>
+                        <div class="col-md-6">
+                            <label>
+                                Image
+                            </label>
+                            <input class="form-control" id="image" type="text" [(ngModel)]="player.image" name="image">
+                        </div>
+                        <div class="col-md-12 pt-4">
+                            <div class="form-group">
+                                <a (click)="addPlayer()" class="btn btn-success btn-block">Add Another Player</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <a (click)="onSubmit()" *ngIf="!checkEditMode()"
+                                    class="btn btn-info btn-block">Submit</a>
+                                <a (click)="updateTeam(team)" *ngIf="checkEditMode()"
+                                    class="btn btn-info btn-block">Update</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
